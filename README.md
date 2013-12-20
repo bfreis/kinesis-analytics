@@ -126,3 +126,15 @@ and hit refresh a few times).
 
 Then go to the Dashboard endpoint (i.e., `/dashboard` on the dashboard
 application) and see the pageviews appearing in real-time!
+
+## Costs
+
+Please be aware that running this sample applications will incur in costs, including:
+
+ - the Kinesis shards;
+ - DynamoDB tables created by the Kinesis Client Library;
+ - the EC2 instances created by Elastic Beanstalk;
+ - some storage on S3 for the WAR files;
+ - data transfer;
+
+You are responsible for this costs.
