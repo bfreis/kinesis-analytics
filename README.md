@@ -106,6 +106,9 @@ one for the collector and one for the dashboard.
 Point your browser to `https://console.aws.amazon.com/elasticbeanstalk`
 and create two new Tomcat 7 Java 7 applications.
 
+Note: please ensure that your Elastic Beanstalks have an associated
+IAM role with Kinesis-related permissions.
+
 ## Elastic Beanstalk environment configuration
 
 Since this is a multi-subproject Play project, you'll need to
