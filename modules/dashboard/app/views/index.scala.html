@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <p>Per second, last minute:</p>
+        <canvas id="minuteCanvas" width="800px" height="200px"></canvas><br/>
+
+        <p>Per minute, last hour:</p>
+        <canvas id="hourCanvas" width="800px" height="200px"></canvas><br/>
+
+        <p>Per hour, last day:</p>
+        <canvas id="dayCanvas" width="800px" height="200px"></canvas><br/>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script>
+        $(function() {
+            var mCtx= document.getElementById("minuteCanvas").getContext("2d");
+            var hCtx = document.getElementById("hourCanvas").getContext("2d");
+            var dCtx = document.getElementById("dayCanvas").getContext("2d");
+
+            var mChart = new Chart(mCtx);
+            var hChart = new Chart(hCtx);
+            var dChart = new Chart(dCtx);
+
+            var updateChart = function(chart, api, labelCount) {
+                $.getJSON(api, function(values) {
+                    var labels = [];
+                    while (labelCount > 0) {
+                        labels.push(labelCount--);
+                    }
+                    var data = {
+                        labels: labels,
+                        datasets:[{
+                            data:values,
+                            strokeColor : "rgba(151,187,205,1)"}]
+                    };
+                    chart.Line(data, {
+                        animation: false,
+                        pointDot: false,
+                        datasetFill: false,
+                        datasetStrokeWidth: 5});
+                    });
+            };
+
+            setInterval(function() {
+                updateChart(mChart, "/api/minute", 60);
+                updateChart(hChart, "/api/hour", 60);
+                updateChart(dChart, "/api/day", 24);
+            }, 1000);
+        });
+        </script>
+    </body>
+</html>

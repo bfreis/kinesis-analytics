@@ -1,0 +1,4 @@
+GET        /dashboard         controllers.Dashboard.index
+GET        /api/minute        controllers.Dashboard.minute(callback: String ?= null)
+GET        /api/hour          controllers.Dashboard.hour(callback: String ?= null)
+GET        /api/day           controllers.Dashboard.day(callback: String ?= null)
