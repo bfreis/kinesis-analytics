@@ -1,0 +1,1 @@
+GET        /collect        controllers.Collector.collect
