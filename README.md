@@ -107,17 +107,7 @@ Point your browser to `https://console.aws.amazon.com/elasticbeanstalk`
 and create two new Tomcat 7 Java 7 applications.
 
 Note: please ensure that your Elastic Beanstalks have an associated
-IAM role with Kinesis-related permissions.
-
-## Elastic Beanstalk environment configuration
-
-Since this is a multi-subproject Play project, you'll need to
-specify two parameters to the JVM on Elastic Beanstalk.
-
-Go to the configuration tab and add the following JVM options:
-
- - collector application: `-Dconfig.resource="collector-application.conf"`
- - dashboard application: `-Dconfig.resource="dashboard-application.conf"`
+IAM roles with Kinesis-related permissions.
 
 
 
